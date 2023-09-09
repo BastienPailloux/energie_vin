@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
+  authenticated :user do
+    root to: "bottles#index", as: :authenticated_root
+  end
   root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :bottles, only: [:index]
 end
