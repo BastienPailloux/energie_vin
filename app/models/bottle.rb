@@ -1,6 +1,7 @@
 class Bottle < ApplicationRecord
   has_many :ratings, dependent: :destroy
   has_many :sells, dependent: :destroy
+  has_one_attached :photo
 
   validates :type, presence: true, inclusion: { in: %w(red pink white champagne) }
   validates :name, presence: true, uniqueness: { scope: :year }
