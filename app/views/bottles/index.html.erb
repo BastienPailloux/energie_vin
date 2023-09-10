@@ -1,8 +1,5 @@
 <h1>All bottles</h1>
 
-<% @bottles.each do |bottle| %>
-  <%= bottle.name %>
-  <%= bottle.property %>
-  <%= bottle.year %>
-  <%= cl_image_tag bottle.photo.key, height:300, crop: :fill %>
-<% end %>
+<div class="index-cards">
+  <%= render 'index_card', bottle: @bottles %>
+</div>

@@ -1,0 +1,14 @@
+<% @bottles.each do |bottle| %>
+    <%= link_to bottle_path(bottle) do %>
+      <div class="index-card-bottle">
+        <div class="index-card-bottle-image">
+          <%= cl_image_tag bottle.photo.key, height:300, crop: :fill %>
+        </div>
+        <div class="index-card-bottle-info">
+          <%= bottle.name %>
+          <%= bottle.property %>
+          <%= bottle.year %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
