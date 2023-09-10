@@ -1,0 +1,12 @@
+<% @bottle.ratings.each do |rating| %>
+  <div class="bottle-show-evaluation">
+    <div class="bottle-show-evaluation-user">
+      <%= cl_image_tag rating.user.photo.key, class: "avatar" %>
+      <%= rating.user.name %>
+    </div>
+    <div class="bottle-show-evaluation-rate">
+      <%= rating.rate %>
+      <%= rating.comment %>
+    </div>
+  </div>
+<% end %>

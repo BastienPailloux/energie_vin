@@ -6,6 +6,7 @@ class BottlesController < ApplicationController
   end
 
   def show
+    @rating = Rating.new
   end
 
   private
@@ -13,5 +14,4 @@ class BottlesController < ApplicationController
   def set_bottle
     @bottle = Bottle.find(params[:id])
   end
-
 end

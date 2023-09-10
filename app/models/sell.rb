@@ -4,4 +4,5 @@ class Sell < ApplicationRecord
 
   validates :price, presence: true
   validates :bottle_id, presence: true
+
 end

@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   end
   root to: "pages#home"
 
-  resources :bottles, only: %i(index show)
+  resources :bottles, only: %i[index show] do
+    resources :ratings, only: %i[create]
+  end
+
 end

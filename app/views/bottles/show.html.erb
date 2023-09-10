@@ -1,10 +1,23 @@
-<div class="show-card-bottle">
-  <div class="show-card-bottle-image">
+<div class="bottle-show-card">
+  <div class="bottle-show-card-image">
     <%= cl_image_tag @bottle.photo.key, height:300, crop: :fill %>
   </div>
-  <div class="show-card-bottle-info">
+  <div class="bottle-show-card-info">
     <%= @bottle.name %>
+    <%= @bottle.average_rate %>
     <%= @bottle.property %>
     <%= @bottle.year %>
   </div>
+  <div class="bottle-show-evaluations">
+    <h2>L'avis de nos experts</h2>
+    <%= render 'evaluations', bottle: @bottle %>
+  </div>
+  <% if current_user.profile == "expert" %>
+    <div class="bottle-show-evaluations-newreview" data-controller="bottles">
+      <button class="btn btn-outline-primary" data-action='click->bottles#displayForm'>Add a review</button>
+      <div class="bottle-show-evaluations-form d-none" data-bottles-target='newReview'>
+        <%= render 'form_review', rating: @rating, bottle: @bottle %>
+      </div>
+    </div>
+  <% end %>
 </div>
