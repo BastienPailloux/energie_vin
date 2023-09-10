@@ -8,6 +8,17 @@
     <%= @bottle.property %>
     <%= @bottle.year %>
   </div>
+  <div class="bottle-show-evolution">
+  <h2>Évolution des prix de vente</h2>
+    <div class="bottle-show-evolution-details">
+      <%= line_chart Sell.where(bottle: @bottle).group_by_day(:created_at).average(:price) %>
+      <% @bottle.sells.order(created_at: :desc).limit(10).each do |sell| %>
+        <p><%= sell.created_at.strftime("%d %b %Y") %> - <%= sell.price %>€ on <%= link_to sell.website.name, sell.website.url %> </p>
+      <% end %>
+    </div>
+  <%= link_to "Voir plus de ventes", bottle_sells_path(@bottle), class:'btn btn-outline-primary' %>
+  </div>
+
   <div class="bottle-show-evaluations">
     <h2>L'avis de nos experts</h2>
     <%= render 'evaluations', bottle: @bottle %>

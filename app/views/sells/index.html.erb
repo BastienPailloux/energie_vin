@@ -1,0 +1,9 @@
+<h2>Toutes les ventes de <%= @bottle.name %></h2>
+
+<div>
+  <p>Prix moyen constaté: <%= @sells.average(:price).round(2) %></p>
+</div>
+
+<% @sells.order(created_at: :desc).each do |sell| %>
+  <p><%= sell.created_at.strftime("%d %b %Y") %> - <%= sell.price %>€ on <%= link_to sell.website.name, sell.website.url %> </p>
+<% end %>

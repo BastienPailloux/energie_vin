@@ -7,6 +7,6 @@ Rails.application.routes.draw do
 
   resources :bottles, only: %i[index show] do
     resources :ratings, only: %i[create]
+    resources :sells, only: %i[index]
   end
-
 end
