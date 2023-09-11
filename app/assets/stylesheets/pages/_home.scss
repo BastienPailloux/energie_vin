@@ -1,3 +1,11 @@
 .home-content {
   margin-top: 702px;
 }
+
+.home-content-search-form {
+  color: $primary;
+  margin-bottom: 48px;
+  .btn {
+    margin-left: 16px;
+  }
+}

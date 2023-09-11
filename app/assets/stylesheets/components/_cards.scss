@@ -1,0 +1,35 @@
+.index-cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+  justify-content: space-between
+}
+
+.index-card-bottle {
+  flex: 0 0 31.333333%;
+  max-width: 31.333333%;
+  overflow: hidden;
+  height: 300px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  margin: 8px;
+  border-radius: 16px;
+}
+
+.index-card-bottle-image {
+  img {
+    height: 280px;
+  }
+}
+
+.index-card-bottle-info {
+  height: 300px;
+}
+
+.index-card-bottle-info-name {
+  font-weight: bold;
+  text-align: center;
+}

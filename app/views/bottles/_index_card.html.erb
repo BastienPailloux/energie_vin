@@ -1,16 +1,14 @@
 <% @bottles.each do |bottle| %>
-    <%= link_to bottle_path(bottle) do %>
-      <div class="index-card-bottle">
-        <div class="index-card-bottle-image">
-          <%= cl_image_tag bottle.photo.key, height:300, crop: :fill %>
-        </div>
-        <div class="index-card-bottle-info">
-          <%= bottle.name %>
-          <%= bottle.average_rate %>
-          <%= bottle.property %>
-          <%= bottle.year %>
-          <p><%= bottle.price %>€</p>
-        </div>
+    <%= link_to bottle_path(bottle), class: "index-card-bottle" do %>
+      <div class="index-card-bottle-image">
+        <%= cl_image_tag bottle.photo.key, height:300, crop: :fill %>
+      </div>
+      <div class="index-card-bottle-info">
+        <p class="index-card-bottle-info-name"><%= bottle.name %></p>
+        <p class="index-card-bottle-info-rate"><%= bottle.average_rate %></p>
+        <p class="index-card-bottle-info-property"><%= bottle.property %></p>
+        <p class="index-card-bottle-info-year"><%= bottle.year %></p>
+        <p class="index-card-bottle-info-price"><%= bottle.price %>€</p>
       </div>
     <% end %>
   <% end %>
