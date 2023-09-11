@@ -1,0 +1,34 @@
+.index-content{
+  margin-top: 16px;
+}
+
+.bottle-show{
+  margin-top: 16px;
+}
+
+.bottle-show-presentation {
+  display: flex;
+}
+
+.bottle-show-presentation-image {
+  img{
+    height: 500px;
+  }
+}
+
+.bottle-show-presentation-info-name {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.bottle-show-presentation-info-rate {
+  width: 30px;
+  height: 30px;
+  bottom:0;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.bottle-show-presentation-info-property {
+  margin: 0;
+}

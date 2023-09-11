@@ -5,7 +5,15 @@
       </div>
       <div class="index-card-bottle-info">
         <p class="index-card-bottle-info-name"><%= bottle.name %></p>
-        <p class="index-card-bottle-info-rate"><%= bottle.average_rate %></p>
+        <p>
+          <% bottle.average_rate.round(0).times do |n| %>
+            <%= inline_svg_tag("starFull.svg", class: "index-card-bottle-info-rate") %>
+          <% end %>
+          <% (5-bottle.average_rate.round(0)).times do |n| %>
+            <%= inline_svg_tag("starEmpty.svg", class: "index-card-bottle-info-rate") %>
+          <% end %>
+          (<%= bottle.average_rate %>)
+        </p>
         <p class="index-card-bottle-info-property"><%= bottle.property %></p>
         <p class="index-card-bottle-info-year"><%= bottle.year %></p>
         <p class="index-card-bottle-info-price"><%= bottle.price %>€</p>

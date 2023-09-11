@@ -27,9 +27,43 @@
 
 .index-card-bottle-info {
   height: 300px;
+  padding: 8px;
 }
 
 .index-card-bottle-info-name {
   font-weight: bold;
+  font-size: 24px;
   text-align: center;
+  margin: 16px 4px 8px 4px;
+  height: 72px;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.index-card-bottle-info-rate {
+  width: 20px;
+  height: 20px;
+  bottom:0;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.index-card-bottle-info-property {
+  text-align: center;
+  color: $primary;
+  margin: 0;
+}
+
+.index-card-bottle-info-year {
+  text-align: center;
+  color: $primary;
+  margin: 0;
+}
+
+.index-card-bottle-info-price {
+  text-align: center;
+  color: $secondary;
+  margin: 16px 0px;
+  font-size: 24px;
+  font-weight: bold;
 }
