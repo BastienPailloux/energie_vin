@@ -14,6 +14,10 @@ class Bottle < ApplicationRecord
     ratings.average(:rate).round(2)
   end
 
+  def price
+    sells.last.price
+  end
+
   scope :order_by_rate, -> {
     where("bottles.id in (select bottle_id from ratings)")
       .group('bottles.id, bottles.name, bottles.wine_type, bottles.property, bottles.year ')
