@@ -1,12 +1,25 @@
-<div class="bottle-show-card">
-  <div class="bottle-show-card-image">
-    <%= cl_image_tag @bottle.photo.key, height:300, crop: :fill %>
-  </div>
-  <div class="bottle-show-card-info">
-    <%= @bottle.name %>
-    <%= @bottle.average_rate %>
-    <%= @bottle.property %>
-    <%= @bottle.year %>
+<div class="bottle-show">
+  <div class="bottle-show-presentation">
+    <div class="bottle-show-presentation-image">
+      <%= cl_image_tag @bottle.photo.key, height:300, crop: :fill %>
+    </div>
+    <div class="bottle-show-presentation-info">
+      <h1 class="bottle-show-presentation-info-name"><%= @bottle.name %></h1>
+      <p>
+        <% @bottle.average_rate.round(0).times do |n| %>
+          <%= inline_svg_tag("starFull.svg", class: "bottle-show-presentation-info-rate") %>
+        <% end %>
+        <% (5-@bottle.average_rate.round(0)).times do |n| %>
+          <%= inline_svg_tag("starEmpty.svg", class: "bottle-show-presentation-info-rate") %>
+        <% end %>
+        (<%= @bottle.average_rate %>)
+      </p>
+      <p class="bottle-show-presentation-info-property"><%= @bottle.property %></p>
+      <p class="bottle-show-presentation-info-year"><%= @bottle.year %></p>
+      <p class="bottle-show-presentation-info-price">Dernier prix de vente constaté: <%= @bottle.price %>€</p>
+      <p class="bottle-show-presentation-info-average">Prix de vente moyen constaté: <%= @average_price %>€</p>
+      <p class="bottle-show-presentation-info-percentage">Différence: <%= @price_evolution %>% </p>
+    </div>
   </div>
   <div class="bottle-show-evolution">
   <h2>Évolution des prix de vente</h2>

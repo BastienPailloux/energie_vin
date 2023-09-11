@@ -1,7 +1,7 @@
 <h2>Toutes les ventes de <%= @bottle.name %></h2>
 
 <div>
-  <p>Prix moyen constaté: <%= @sells.average(:price).round(2) %></p>
+  <p>Prix moyen constaté: <%= @average_price %></p>
 </div>
 
 <% @sells.order(created_at: :desc).each do |sell| %>
