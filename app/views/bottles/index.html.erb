@@ -1,14 +1,6 @@
 <div class="home-content" data-controller='research'>
   <h1>Trouvez les meilleurs vins</h1>
-  <div class="home-content-search-form">
-    <%= form_with url:"/", method: :get do |f| %>
-      <%= f.label :minPrice, "Prix minimum"%>
-      <%= f.number_field :minPrice, in: 0..2000 , value: @min_price, data: {action: 'change->research#minPrice', research_target:'minPrice' } %>
-      <%= f.label :maxPrice, "Prix maximum"%>
-      <%= f.number_field :maxPrice, in: 0..2000, value: @max_price, data: {action: 'change->research#maxPrice', research_target:'maxPrice' } %>
-      <%= submit_tag "Rechercher", name: "", class: "btn btn-primary" %>
-    <% end %>
-  </div>
+  <%= render 'form_research', minPrice: @minPrice, maxPrice: @maxPrice %>
   <div class="index-cards">
     <%= render 'index_card', bottles: @bottles %>
   </div>
