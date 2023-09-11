@@ -2,7 +2,7 @@ class BottlesController < ApplicationController
   before_action :set_bottle, only: %i[show]
 
   def index
-    @bottles = Bottle.all)
+    @bottles = Bottle.all.order_by_rate
   end
 
   def show

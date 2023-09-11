@@ -1,13 +1,5 @@
 <h1>All bottles</h1>
 
-      <div data-role="rangeslider">
-        <label for="price-min">Price:</label>
-        <input type="range" name="price-min" id="price-min" value="200" min="0" max="2000">
-        <label for="price-max">Price:</label>
-        <input type="range" name="price-max" id="price-max" value="800" min="0" max="2000">
-      </div>
-
-
 <div class="index-cards">
   <%= render 'index_card', bottles: @bottles %>
 </div>
