@@ -8,6 +8,7 @@
 
 .bottle-show-presentation {
   display: flex;
+  margin-top: 16px;
 }
 
 .bottle-show-presentation-image {
@@ -31,4 +32,78 @@
 
 .bottle-show-presentation-info-property {
   margin: 0;
+}
+
+.bottle-show-evolution {
+  margin-top: 16px;
+}
+
+.bottle-show-evolution-details {
+  display: flex;
+}
+
+.bottle-show-evolution-details-historic {
+  a {
+    color: $secondary;
+  }
+}
+
+.bottle-show-evaluations {
+  margin-top: 16px;
+}
+
+.bottle-show-evaluation {
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 8px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+}
+
+.bottle-show-evaluation-rating-rate {
+  width: 20px;
+  height: 20px;
+  bottom:0;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.bottle-show-evaluations-newreview {
+  margin: 16px 0px;
+}
+
+.bottle-show-evaluations-form-content {
+  display: flex;
+}
+
+.rating_rate {
+  margin-right: 8px;
+  margin-top: 8px;
+  width: 10%;
+}
+
+.rating_comment {
+  margin-left: 8px;
+  margin-top: 8px;
+  width: 70%;
+}
+
+.form-control {
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.form-control:focus {
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.form-select {
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.form-select:focus {
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }

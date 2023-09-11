@@ -1,9 +1,15 @@
-<h2>Toutes les ventes de <%= @bottle.name %></h2>
+<div class="sells">
+  <%= link_to bottle_path(@bottle) do %>
+    <i class="fa-solid fa-chevron-left"></i><i>Revenir en arrière</i>
+  <% end %>
+  <h1>Toutes les ventes de <%= @bottle.name %></h1>
 
-<div>
-  <p>Prix moyen constaté: <%= @average_price %></p>
+
+  <div>
+    <p class="sells-average-price">Prix moyen constaté: <span class="fw-bold text-secondary"><%= @average_price %>€</span></p>
+  </div>
+
+  <% @sells.order(created_at: :desc).each do |sell| %>
+    <p class="sells-details"><%= sell.created_at.strftime("%d %b %Y") %> - <%= sell.price %>€ on <%= link_to sell.website.name, sell.website.url %> </p>
+  <% end %>
 </div>
-
-<% @sells.order(created_at: :desc).each do |sell| %>
-  <p><%= sell.created_at.strftime("%d %b %Y") %> - <%= sell.price %>€ on <%= link_to sell.website.name, sell.website.url %> </p>
-<% end %>

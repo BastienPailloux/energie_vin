@@ -1,4 +1,7 @@
 <div class="bottle-show">
+    <%= link_to root_path do %>
+    <i class="fa-solid fa-chevron-left"></i><i>Revenir en arrière</i>
+  <% end %>
   <div class="bottle-show-presentation">
     <div class="bottle-show-presentation-image">
       <%= cl_image_tag @bottle.photo.key, height:300, crop: :fill %>
@@ -16,20 +19,23 @@
       </p>
       <p class="bottle-show-presentation-info-property"><%= @bottle.property %></p>
       <p class="bottle-show-presentation-info-year"><%= @bottle.year %></p>
-      <p class="bottle-show-presentation-info-price">Dernier prix de vente constaté: <%= @bottle.price %>€</p>
-      <p class="bottle-show-presentation-info-average">Prix de vente moyen constaté: <%= @average_price %>€</p>
-      <p class="bottle-show-presentation-info-percentage">Différence: <%= @price_evolution %>% </p>
+      <p class="bottle-show-presentation-info-price">Dernier prix de vente constaté: <span class="fw-bold"><%= @bottle.price %>€</span></p>
+      <p class="bottle-show-presentation-info-average">Prix de vente moyen constaté: <span class="fw-bold"><%= @average_price %>€</span></p>
+      <% color = @price_evolution >= 0 ? "text-success" : "text-danger" %>
+      <p class="bottle-show-presentation-info-percentage">Différence: <span class= "<%= color%> fw-bold"><%= @price_evolution %>%</span> </p>
     </div>
   </div>
   <div class="bottle-show-evolution">
   <h2>Évolution des prix de vente</h2>
     <div class="bottle-show-evolution-details">
-      <%= line_chart Sell.where(bottle: @bottle).group_by_day(:created_at).average(:price) %>
-      <% @bottle.sells.order(created_at: :desc).limit(10).each do |sell| %>
-        <p><%= sell.created_at.strftime("%d %b %Y") %> - <%= sell.price %>€ on <%= link_to sell.website.name, sell.website.url %> </p>
-      <% end %>
+      <%= line_chart Sell.where(bottle: @bottle).group_by_day(:created_at).average(:price), class:'col-8' %>
+      <div class="bottle-show-evolution-details-historic col-4">
+        <% @bottle.sells.order(created_at: :desc).limit(7).each do |sell| %>
+          <p><%= sell.created_at.strftime("%d %b %Y") %> - <%= sell.price %>€ chez <%= link_to sell.website.name, sell.website.url %> </p>
+        <% end %>
+        <%= link_to "Voir plus de ventes", bottle_sells_path(@bottle), class:'btn btn-outline-primary' %>
+      </div>
     </div>
-  <%= link_to "Voir plus de ventes", bottle_sells_path(@bottle), class:'btn btn-outline-primary' %>
   </div>
 
   <div class="bottle-show-evaluations">
@@ -38,7 +44,7 @@
   </div>
   <% if current_user.profile == "expert" %>
     <div class="bottle-show-evaluations-newreview" data-controller="bottles">
-      <button class="btn btn-outline-primary" data-action='click->bottles#displayForm'>Add a review</button>
+      <button class="btn btn-outline-primary" data-action='click->bottles#displayForm'>Ajouter un avis</button>
       <div class="bottle-show-evaluations-form d-none" data-bottles-target='newReview'>
         <%= render 'form_review', rating: @rating, bottle: @bottle %>
       </div>

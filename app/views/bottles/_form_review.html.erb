@@ -1,7 +1,9 @@
 <%= simple_form_for([@bottle, @rating]) do |f| %>
-  <%= f.input :rate %>
-  <%= f.input :comment %>
+  <div class="bottle-show-evaluations-form-content">
+    <%= f.input :rate, collection: 0..5, include_blank: false, label: "Note",  class: "bottle-show-evaluations-form-input" %>
+    <%= f.input :comment, label: "Commentaire", class: "bottle-show-evaluations-form-input" %>
+  </div>
   <%= f.association :user, input_html: { :value => current_user.id }, as: :hidden %>
   <%= f.association :bottle, input_html: { :value => @bottle.id }, as: :hidden %>
-  <%= f.button :submit %>
+  <%= f.button :submit, value: "Valider mon avis" class: "bottle-show-evaluations-form-submit btn btn-primary" %>
 <% end %>

@@ -4,8 +4,13 @@
       <%= cl_image_tag rating.user.photo.key, class: "avatar" %>
       <%= rating.user.name %>
     </div>
-    <div class="bottle-show-evaluation-rate">
-      <%= rating.rate %>
+    <div class="bottle-show-evaluation-rating">
+      <% @bottle.average_rate.round(0).times do |n| %>
+          <%= inline_svg_tag("starFull.svg", class: "bottle-show-evaluation-rating-rate") %>
+        <% end %>
+        <% (5-@bottle.average_rate.round(0)).times do |n| %>
+          <%= inline_svg_tag("starEmpty.svg", class: "bottle-show-evaluation-rating-rate") %>
+        <% end %>
       <%= rating.comment %>
     </div>
   </div>
