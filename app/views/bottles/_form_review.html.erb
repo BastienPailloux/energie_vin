@@ -5,5 +5,5 @@
   </div>
   <%= f.association :user, input_html: { :value => current_user.id }, as: :hidden %>
   <%= f.association :bottle, input_html: { :value => @bottle.id }, as: :hidden %>
-  <%= f.button :submit, value: "Valider mon avis" class: "bottle-show-evaluations-form-submit btn btn-primary" %>
+  <%= f.button :submit, value: "Valider mon avis", class: "bottle-show-evaluations-form-submit btn btn-primary" %>
 <% end %>

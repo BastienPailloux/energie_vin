@@ -21,7 +21,7 @@
       <p class="bottle-show-presentation-info-year"><%= @bottle.year %></p>
       <p class="bottle-show-presentation-info-price">Dernier prix de vente constaté: <span class="fw-bold"><%= @bottle.price %>€</span></p>
       <p class="bottle-show-presentation-info-average">Prix de vente moyen constaté: <span class="fw-bold"><%= @average_price %>€</span></p>
-      <% color = @price_evolution >= 0 ? "text-success" : "text-danger" %>
+      <% color = @price_evolution >= 0 ? "text-danger" : "text-success" %>
       <p class="bottle-show-presentation-info-percentage">Différence: <span class= "<%= color%> fw-bold"><%= @price_evolution %>%</span> </p>
     </div>
   </div>

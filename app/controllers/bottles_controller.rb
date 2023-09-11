@@ -16,7 +16,7 @@ class BottlesController < ApplicationController
     @rating = Rating.new
     @sells = Sell.where(bottle: @bottle)
     @average_price = @sells.average(:price).round(2)
-    @price_evolution = ((1 - (@sells.last.price / @average_price)) * 100).round(2)
+    @price_evolution = ((1 - (@average_price / @sells.last.price)) * 100).round(2)
   end
 
   private
