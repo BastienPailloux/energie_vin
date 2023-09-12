@@ -1,0 +1,8 @@
+<% @searches.each do |search| %>
+  <%= link_to user_search_path(@user, search) do %>
+    <div class="search-content-card">
+      <p>Vins <%= search.condition %></p>
+      <p>Enregistré le <%= search.created_at.strftime("%d %b %Y") %></p>
+    </div>
+  <% end %>
+<% end %>

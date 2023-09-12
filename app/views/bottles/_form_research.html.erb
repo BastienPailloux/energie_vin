@@ -7,7 +7,7 @@
     <%= submit_tag "Rechercher", name: "", class: "btn btn-primary" %>
     <% if user_signed_in? %>
       <% if @min_price || @max_price %>
-        <%= link_to "/searches?min_price=#{@min_price}&max_price=#{@max_price}", data: {turbo_method: :post, min_price: @min_price, max_price: @max_price} do %>
+        <%= link_to "/user/#{current_user.id}/searches?min_price=#{@min_price}&max_price=#{@max_price}", data: {turbo_method: :post, min_price: @min_price, max_price: @max_price} do %>
           <i class="fa-regular fa-floppy-disk"></i>
         <% end %>
       <% end %>

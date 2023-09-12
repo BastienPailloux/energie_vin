@@ -6,6 +6,14 @@
   top: 0;
 }
 
+.navbar-nav {
+  align-items: center;
+}
+
+.nav-item {
+  margin-right: 16px;
+}
+
 .navbar .navbar-collapse {
   flex-grow: 0;
 }
