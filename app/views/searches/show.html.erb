@@ -1,4 +1,7 @@
-<h1>Vins <%= @search.condition %></h1>
+<%= link_to user_searches_path(current_user) do %>
+  <i class="fa-solid fa-chevron-left"></i><i>Revenir en arrière</i>
+<% end %>
+<h1 class="search-show-title">Vins <%= @search.condition %></h1>
 <div class="index-cards">
   <%= render 'bottles/index_card', bottles: @bottles %>
 </div>

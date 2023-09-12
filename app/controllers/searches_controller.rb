@@ -1,6 +1,6 @@
 class SearchesController < ApplicationController
   before_action :set_user, only: %i[index create]
-  before_action :set_search, only: %i[show]
+  before_action :set_search, only: %i[show destroy]
 
   def index
     @searches = Search.where(user_id: @user.id)
@@ -18,6 +18,11 @@ class SearchesController < ApplicationController
       condition: "entre #{params[:min_price]}€ et #{params[:max_price]}€"
     )
     @search.save!
+  end
+
+  def destroy
+    @search.destroy
+    redirect_to user_searches_path(current_user)
   end
 
   private

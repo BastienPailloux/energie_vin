@@ -1,8 +1,15 @@
 <% @searches.each do |search| %>
   <%= link_to user_search_path(@user, search) do %>
     <div class="search-content-card">
-      <p>Vins <%= search.condition %></p>
-      <p>Enregistré le <%= search.created_at.strftime("%d %b %Y") %></p>
+      <div class="search-content-card-info">
+        <p class="search-content-card-info-title">Vins <%= search.condition %></p>
+        <p class="search-content-card-info-date">Enregistrée le <%= search.created_at.strftime("%d %b %Y") %></p>
+      </div>
+      <div class="search-content-card-destroy">
+        <%= link_to user_search_path(@user, search), data: { turbo_method: :delete } do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end %>
+      </div>
     </div>
   <% end %>
 <% end %>

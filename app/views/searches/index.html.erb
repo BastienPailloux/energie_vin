@@ -1,2 +1,8 @@
-<h1>Mes recherches</h1>
-<%= render 'search_card', searches: @searches, user: @user %>
+<h1 class= "search-index-title">Mes recherches</h1>
+<div class="search-index-content">
+  <% if @searches.empty? %>
+    <p>Vous n'avez pas encore sauvegardé de recherche</p>
+  <% else%>
+    <%= render 'search_card', searches: @searches, user: @user %>
+  <% end %>
+</div>

@@ -10,6 +10,6 @@ Rails.application.routes.draw do
     resources :sells, only: %i[index]
   end
   resources :user do
-    resources :searches, only: %i[index show create]
+    resources :searches, only: %i[index show create destroy]
   end
 end

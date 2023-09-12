@@ -1,0 +1,47 @@
+.search-index-title {
+  margin-top: 16px;
+}
+.search-index-content {
+  padding-bottom: 32px;
+}
+
+.search-content-card {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  margin-top: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  align-items: center;
+  border-radius: 16px;
+}
+
+.search-content-card-info {
+  padding: 16px;
+  p {
+    margin: 0;
+  }
+}
+
+.search-content-card-destroy {
+  padding: 16px;
+  p {
+    margin: 0;
+  }
+}
+
+.search-content-card-info-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.search-content-card-info-date {
+  color: $primary-light;
+}
+
+.fa-trash-can {
+  color: $red;
+}
+
+.search-show-title {
+  margin-top: 16px;
+}

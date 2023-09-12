@@ -12,6 +12,7 @@
 
 .nav-item {
   margin-right: 16px;
+  color: $primary;
 }
 
 .navbar .navbar-collapse {
@@ -30,5 +31,10 @@
     font-size: 32px;
     font-family: $headers-font;
     font-weight: bold;
+    color: $primary
   }
+}
+
+.dropdown-menu{
+  background-color: white;
 }
