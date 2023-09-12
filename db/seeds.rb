@@ -32,13 +32,13 @@ puts 'creating bottles'
   )
   case bottle.wine_type
   when "red"
-    bottle.photo.attach(io: URI.open('images/red.png'), filename: 'red.png')
+    bottle.photo.attach(io: URI.open('app/assets/images/red.png'), filename: 'red.png')
   when "white"
-    bottle.photo.attach(io: URI.open('images/white.png'), filename: 'white.png')
+    bottle.photo.attach(io: URI.open('app/assets/images/white.png'), filename: 'white.png')
   when "pink"
-    bottle.photo.attach(io: URI.open('images/pink.png'), filename: 'pink.png')
+    bottle.photo.attach(io: URI.open('app/assets/images/pink.png'), filename: 'pink.png')
   when "champagne"
-    bottle.photo.attach(io: URI.open('images/champagne.png'), filename: 'champagne.png')
+    bottle.photo.attach(io: URI.open('app/assets/images/champagne.png'), filename: 'champagne.png')
   else
     "error"
   end
@@ -54,7 +54,7 @@ puts 'creating users'
     email: Faker::Internet.email(name: :name),
     password: '123456'
   )
-  user.photo.attach(io: URI.open('images/avatar.jpg'), filename: 'avatar.jpg')
+  user.photo.attach(io: URI.open('app/assets/images/avatar.jpg'), filename: 'avatar.jpg')
   user.save!
   puts "#{user.name} created"
 }
