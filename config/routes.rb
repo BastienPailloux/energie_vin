@@ -9,4 +9,5 @@ Rails.application.routes.draw do
     resources :ratings, only: %i[create]
     resources :sells, only: %i[index]
   end
+  resources :searches, only: %i[create]
 end

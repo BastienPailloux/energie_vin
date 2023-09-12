@@ -1,9 +1,16 @@
 <div class="home-content-search-form">
   <%= form_with url:"/", method: :get do |f| %>
-    <%= f.label :minPrice, "Prix minimum"%>
-    <%= f.number_field :minPrice, in: 0..2000 , value: @min_price, data: {action: 'change->research#minPrice', research_target:'minPrice' } %>
-    <%= f.label :maxPrice, "Prix maximum"%>
-    <%= f.number_field :maxPrice, in: 0..2000, value: @max_price, data: {action: 'change->research#maxPrice', research_target:'maxPrice' } %>
+    <%= f.label :min_price, "Prix minimum"%>
+    <%= f.number_field :min_price, in: 0..2000 , value: @min_price, data: {action: 'change->research#minPrice', research_target:'minPrice' } %>
+    <%= f.label :max_price, "Prix maximum"%>
+    <%= f.number_field :max_price, in: 0..2000, value: @max_price, data: {action: 'change->research#maxPrice', research_target:'maxPrice' } %>
     <%= submit_tag "Rechercher", name: "", class: "btn btn-primary" %>
+    <% if user_signed_in? %>
+      <% if @min_price || @max_price %>
+        <%= link_to "/searches?min_price=#{@min_price}&max_price=#{@max_price}", data: {turbo_method: :post, min_price: @min_price, max_price: @max_price} do %>
+          <i class="fa-regular fa-floppy-disk"></i>
+        <% end %>
+      <% end %>
+    <% end %>
   <% end %>
 </div>

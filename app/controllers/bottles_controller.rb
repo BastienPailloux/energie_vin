@@ -5,10 +5,10 @@ class BottlesController < ApplicationController
     @bottles = Bottle.all.order_by_rate
     @min_price = 0
     @max_price = 2000
-    if params[:minPrice].present? || params[:maxPrice].present?
-      @bottles = @bottles.select { |bottle| bottle.price.between?(params[:minPrice].to_i, params[:maxPrice].to_i) }
-      @min_price = params[:minPrice].to_i
-      @max_price = params[:maxPrice].to_i
+    if params[:min_price].present? || params[:max_price].present?
+      @bottles = @bottles.select { |bottle| bottle.price.between?(params[:min_price].to_i, params[:max_price].to_i) }
+      @min_price = params[:min_price].to_i
+      @max_price = params[:max_price].to_i
     end
   end
 
