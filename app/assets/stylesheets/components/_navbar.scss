@@ -13,3 +13,14 @@
 .navbar .navbar-brand img {
   width: 60px;
 }
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  p {
+    margin: 0 0 0 16px;
+    font-size: 32px;
+    font-family: $headers-font;
+    font-weight: bold;
+  }
+}
