@@ -1,6 +1,13 @@
 <%= simple_form_for([@bottle, @rating]) do |f| %>
-  <div class="bottle-show-evaluations-form-content">
-    <%= f.input :rate, collection: 0..5, include_blank: false, label: "Note",  class: "bottle-show-evaluations-form-input" %>
+  <div class="bottle-show-evaluations-form-content", data-bottles-target='rate' >
+    <%= f.input :rate, as: :hidden, label: "Note" %>
+    <div class="bottle-show-evaluations-form-stars">
+      <div class="my-3">
+        <% (1..5).each do |index| %>
+          <i class="fa-regular fa-star bottle-show-evaluations-form-rate" data-bottles-target="star" data-action='click->bottles#updateRate mouseover->bottles#mouseOver mouseout->bottles#mouseOut' id= '<%= index %>'></i>
+        <% end %>
+      </div>
+    </div>
     <%= f.input :comment, label: "Commentaire", class: "bottle-show-evaluations-form-input" %>
   </div>
   <%= f.association :user, input_html: { :value => current_user.id }, as: :hidden %>
