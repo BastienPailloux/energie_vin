@@ -9,19 +9,22 @@ class Bottle < ApplicationRecord
   validates :year, presence: true, numericality: { less_than_or_equal_to: Date.today.year }
 
   def average_rate
-    return "" if ratings.empty?
+    return 0 if ratings.empty?
 
     ratings.average(:rate).round(2)
   end
 
   def price
+    return "" if sells.empty?
+
     sells.last.price
   end
 
   scope :order_by_rate, -> {
-    where("bottles.id in (select bottle_id from ratings)")
-      .group('bottles.id, bottles.name, bottles.wine_type, bottles.property, bottles.year ')
-      .joins(:ratings)
-      .order('AVG(ratings.rate) DESC')
+      select("bottles.id, bottles.name, bottles.wine_type, bottles.property, bottles.year")
+        .group("bottles.id")
+        .joins(:ratings)
+        .select('AVG(ratings.rate) AS average_rating')
+        .order('average_rating DESC')
     }
 end

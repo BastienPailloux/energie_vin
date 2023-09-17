@@ -69,14 +69,38 @@ RSpec.describe Bottle, type: :model do
         year: 2021
       )
     end
-    it "should be empty if no ratings" do
-      expect(@bottle.average_rate).to be_empty
+    it "should be 0 if no ratings" do
+      expect(@bottle.average_rate).to eq 0
     end
     it "should return the average" do
       Rating.create(rate: 2, comment: 'comment', bottle_id: @bottle.id, user_id: User.last.id)
       Rating.create(rate: 3, comment: 'comment', bottle_id: @bottle.id, user_id: User.last.id)
       Rating.create(rate: 3, comment: 'comment', bottle_id: @bottle.id, user_id: User.last.id)
       expect(@bottle.average_rate.round(2).to_i).to eq ((2+2+3)/3).round(2)
+    end
+  end
+
+  describe "When call average_rate" do
+    it "should be empty if no sell" do
+      @bottle = Bottle.create(
+        name: "Bottle1",
+        wine_type: "red",
+        property: "Property1",
+        year: 2021
+      )
+      expect(@bottle.price).to be_empty
+    end
+    it "should return the price of the last sell" do
+      @bottle = Bottle.last
+      expect(@bottle.price).to eq (@bottle.sells.last.price)
+    end
+  end
+
+  describe "When call order_by_rate" do
+    it "should order bottles by average rate" do
+      for i in 0..(Bottle.all.length - 2) do
+        expect(Bottle.all.order_by_rate[i].average_rate).to be >= (Bottle.all.order_by_rate[i + 1].average_rate)
+      end
     end
   end
 end

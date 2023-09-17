@@ -25,7 +25,7 @@ User.destroy_all
 puts 'creating bottles'
 20.times {
   bottle = Bottle.new(
-    name: Faker::Beer.name,
+    name: Faker::Beer.unique.name,
     wine_type: ['red', 'pink', 'white', 'champagne'].sample,
     property: Faker::Address.city,
     year: rand(1950...2023)
@@ -49,9 +49,9 @@ puts 'creating bottles'
 puts 'creating users'
 10.times {
   user = User.new(
-    name: Faker::Name.first_name,
+    name: Faker::Name.unique.first_name,
     profile: 'expert',
-    email: Faker::Internet.email(name: :name),
+    email: Faker::Internet.unique.email(name: :name),
     password: '123456'
   )
   user.photo.attach(io: URI.open('app/assets/images/avatar.jpg'), filename: 'avatar.jpg')
