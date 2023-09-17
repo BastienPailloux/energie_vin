@@ -19,12 +19,4 @@ class Bottle < ApplicationRecord
 
     sells.last.price
   end
-
-  scope :order_by_rate, -> {
-      select("bottles.id, bottles.name, bottles.wine_type, bottles.property, bottles.year")
-        .group("bottles.id")
-        .joins(:ratings)
-        .select('AVG(ratings.rate) AS average_rating')
-        .order('average_rating DESC')
-    }
 end

@@ -2,7 +2,7 @@ class BottlesController < ApplicationController
   before_action :set_bottle, only: %i[show]
 
   def index
-    @bottles = Bottle.all.order_by_rate
+    @bottles = Bottle.all.sort{ |a, b| a.average_rate <=> b.average_rate }.reverse
     @min_price = 0
     @max_price = 2000
     if params[:min_price].present? || params[:max_price].present?

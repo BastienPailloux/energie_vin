@@ -7,7 +7,7 @@ class SearchesController < ApplicationController
   end
 
   def show
-    @bottles = Bottle.all.order_by_rate.select { |bottle| bottle.price.between?(@search.min_price.to_i, @search.max_price.to_i) }
+    @bottles = Bottle.all.sort{ |a, b| a.average_rate <=> b.average_rate }.reverse.select { |bottle| bottle.price.between?(@search.min_price.to_i, @search.max_price.to_i) }
   end
 
   def create
