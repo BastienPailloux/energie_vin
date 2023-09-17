@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, path: 'accounts'
+  devise_for :users
   authenticated :user do
     root to: "bottles#index", as: :authenticated_root
   end
@@ -9,7 +9,8 @@ Rails.application.routes.draw do
     resources :ratings, only: %i[create]
     resources :sells, only: %i[index]
   end
-  resources :user do
+  resources :users, only: [] do
     resources :searches, only: %i[index show create destroy]
   end
+
 end
