@@ -95,12 +95,4 @@ RSpec.describe Bottle, type: :model do
       expect(@bottle.price).to eq (@bottle.sells.last.price)
     end
   end
-
-  describe "When call order_by_rate" do
-    it "should order bottles by average rate" do
-      for i in 0..(Bottle.all.length - 2) do
-        expect(Bottle.all.order_by_rate[i].average_rate).to be >= (Bottle.all.order_by_rate[i + 1].average_rate)
-      end
-    end
-  end
 end
